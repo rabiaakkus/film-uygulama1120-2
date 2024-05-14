@@ -39,15 +39,15 @@
             this.txtYil = new System.Windows.Forms.TextBox();
             this.txtSure = new System.Windows.Forms.TextBox();
             this.txtPuan = new System.Windows.Forms.TextBox();
-            this.cmdTur = new System.Windows.Forms.ComboBox();
+            this.cmbTur = new System.Windows.Forms.ComboBox();
             this.cbOdul = new System.Windows.Forms.CheckBox();
-            this.pbResim = new System.Windows.Forms.PictureBox();
+            this.pbPoster = new System.Windows.Forms.PictureBox();
             this.btnSil = new System.Windows.Forms.Button();
             this.btnGuncelle = new System.Windows.Forms.Button();
             this.btnYeniFilmEkle = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pbResim)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgwFilmler = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPoster)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwFilmler)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -139,13 +139,13 @@
             this.txtPuan.Size = new System.Drawing.Size(100, 20);
             this.txtPuan.TabIndex = 10;
             // 
-            // cmdTur
+            // cmbTur
             // 
-            this.cmdTur.FormattingEnabled = true;
-            this.cmdTur.Location = new System.Drawing.Point(56, 102);
-            this.cmdTur.Name = "cmdTur";
-            this.cmdTur.Size = new System.Drawing.Size(121, 21);
-            this.cmdTur.TabIndex = 11;
+            this.cmbTur.FormattingEnabled = true;
+            this.cmbTur.Location = new System.Drawing.Point(56, 102);
+            this.cmbTur.Name = "cmbTur";
+            this.cmbTur.Size = new System.Drawing.Size(121, 21);
+            this.cmbTur.TabIndex = 11;
             // 
             // cbOdul
             // 
@@ -157,13 +157,14 @@
             this.cbOdul.Text = "odul";
             this.cbOdul.UseVisualStyleBackColor = true;
             // 
-            // pbResim
+            // pbPoster
             // 
-            this.pbResim.Location = new System.Drawing.Point(216, 39);
-            this.pbResim.Name = "pbResim";
-            this.pbResim.Size = new System.Drawing.Size(140, 172);
-            this.pbResim.TabIndex = 13;
-            this.pbResim.TabStop = false;
+            this.pbPoster.Location = new System.Drawing.Point(221, 23);
+            this.pbPoster.Name = "pbPoster";
+            this.pbPoster.Size = new System.Drawing.Size(140, 172);
+            this.pbPoster.TabIndex = 13;
+            this.pbPoster.TabStop = false;
+            this.pbPoster.Click += new System.EventHandler(this.pbPoster_Click);
             // 
             // btnSil
             // 
@@ -173,6 +174,7 @@
             this.btnSil.TabIndex = 14;
             this.btnSil.Text = "sil";
             this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // btnGuncelle
             // 
@@ -182,6 +184,7 @@
             this.btnGuncelle.TabIndex = 15;
             this.btnGuncelle.Text = "guncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
+            this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
             // btnYeniFilmEkle
             // 
@@ -191,30 +194,32 @@
             this.btnYeniFilmEkle.TabIndex = 16;
             this.btnYeniFilmEkle.Text = "ekle";
             this.btnYeniFilmEkle.UseVisualStyleBackColor = true;
+            this.btnYeniFilmEkle.Click += new System.EventHandler(this.btnYeniFilmEkle_Click);
             // 
-            // dataGridView1
+            // dgwFilmler
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 232);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(665, 190);
-            this.dataGridView1.TabIndex = 17;
+            this.dgwFilmler.AllowUserToAddRows = false;
+            this.dgwFilmler.AllowUserToDeleteRows = false;
+            this.dgwFilmler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwFilmler.Location = new System.Drawing.Point(12, 232);
+            this.dgwFilmler.Name = "dgwFilmler";
+            this.dgwFilmler.ReadOnly = true;
+            this.dgwFilmler.Size = new System.Drawing.Size(665, 190);
+            this.dgwFilmler.TabIndex = 17;
+            this.dgwFilmler.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwFilmler_CellContentClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 434);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwFilmler);
             this.Controls.Add(this.btnYeniFilmEkle);
             this.Controls.Add(this.btnGuncelle);
             this.Controls.Add(this.btnSil);
-            this.Controls.Add(this.pbResim);
+            this.Controls.Add(this.pbPoster);
             this.Controls.Add(this.cbOdul);
-            this.Controls.Add(this.cmdTur);
+            this.Controls.Add(this.cmbTur);
             this.Controls.Add(this.txtPuan);
             this.Controls.Add(this.txtSure);
             this.Controls.Add(this.txtYil);
@@ -228,8 +233,9 @@
             this.Controls.Add(this.label1);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pbResim)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPoster)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwFilmler)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,13 +254,13 @@
         private System.Windows.Forms.TextBox txtYil;
         private System.Windows.Forms.TextBox txtSure;
         private System.Windows.Forms.TextBox txtPuan;
-        private System.Windows.Forms.ComboBox cmdTur;
+        private System.Windows.Forms.ComboBox cmbTur;
         private System.Windows.Forms.CheckBox cbOdul;
-        private System.Windows.Forms.PictureBox pbResim;
+        private System.Windows.Forms.PictureBox pbPoster;
         private System.Windows.Forms.Button btnSil;
         private System.Windows.Forms.Button btnGuncelle;
         private System.Windows.Forms.Button btnYeniFilmEkle;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwFilmler;
     }
 }
 
